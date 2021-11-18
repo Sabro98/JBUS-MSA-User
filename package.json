@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "tsc-watch --onSuccess \"ts-node dist/init.js\"",
     "start": "node ./dist/init.js",
-    "prestart": "npm run compile",
     "compile": "tsc -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts"
