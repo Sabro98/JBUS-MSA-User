@@ -4,8 +4,8 @@
   "description": "user service for jbus",
   "main": "init.ts",
   "scripts": {
-    "dev": "tsc-watch --onSuccess \"ts-node dist/init.js\"",
-    "start": "node ./dist/init.js",
+    "dev": "tsc-watch --onSuccess \"ts-node out/init.js\"",
+    "start": "node ./out/init.js",
     "compile": "tsc -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts"
