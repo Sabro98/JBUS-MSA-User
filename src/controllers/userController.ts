@@ -28,7 +28,6 @@ export const getLogin = (req: Request, res: Response) => {
 export const postLogin = async (req: Request, res: Response) => {
   const { playerID } = req.body;
   const user = await User.findOne({ playerID });
-  console.log(user);
   if (!user) {
     return res.status(400).send('not user in db');
   }
@@ -37,4 +36,21 @@ export const postLogin = async (req: Request, res: Response) => {
   const resUser = { playerID, playerNickName, playerModel, playerGroup };
 
   return res.send(JSON.stringify(resUser));
+};
+
+export const getSerial = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const user = await User.findOne({ playerID: id });
+
+  if (!user) {
+    return res.status(400).send('not user in db');
+  }
+
+  const { _id } = user;
+  const obj = {
+    id: _id,
+    playerID: id,
+  };
+  return res.send(JSON.stringify(obj));
 };
