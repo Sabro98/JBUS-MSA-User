@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import './db';
-import './Model/User';
+import './model/User';
 import app from './server';
 
 const PORT = process.env.PORT;
