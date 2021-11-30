@@ -37,7 +37,7 @@ export const postLogin = async (req: Request, res: Response) => {
   if (!user) {
     return res.status(400).send('not user in db');
   }
-  console.log(user);
+
   const { playerNickName, playerModel, playerGroup } = user;
   const resUser = { playerID, playerNickName, playerModel, playerGroup };
 
@@ -59,4 +59,16 @@ export const getSerial = async (req: Request, res: Response) => {
     playerNickName,
   };
   return res.send(JSON.stringify(obj));
+};
+
+export const getInfo = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const user = await Users.findByPk(id);
+
+  if (!user) {
+    return res.status(400).json(JSON.stringify({}));
+  }
+
+  return res.status(200).json(user);
 };
